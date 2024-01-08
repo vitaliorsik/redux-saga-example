@@ -11,13 +11,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
-
-const history = createBrowserHistory();
+import {ConnectedRouter} from "connected-react-router";
+import {history} from "./redux/reducers";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={history}>
+      <ConnectedRouter  history={history}>
         <App>
           <Switch>
             <Route path="/" exact>
@@ -31,7 +31,7 @@ ReactDOM.render(
             </Route>
           </Switch>
         </App>
-      </Router>
+      </ConnectedRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

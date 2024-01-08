@@ -6,6 +6,7 @@ import News from "../../components/news/news";
 const App = () => {
   const { popularNews } = useSelector(store => store?.news || {});
   const { popularNewsError } = useSelector(store => store?.errors || {});
+  const { isLoadingData } = useSelector(store => store?.loader || {});
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +15,9 @@ const App = () => {
 
   return(
     <div>
-      <News news={popularNews} error={popularNewsError} title="Popular News" />
+      {isLoadingData ? <h3>Loading...</h3> : (
+          <News news={popularNews} error={popularNewsError} title="Popular News" />
+      )}
     </div>
   );
 };
